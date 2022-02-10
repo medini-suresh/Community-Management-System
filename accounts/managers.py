@@ -31,8 +31,8 @@ class CustomUserManager(BaseUserManager):
             email,
             password=password,
             first_name='admin',
-            phone=2000000000,
-            aadhar=323456789012,
+            phone=2000004000,
+            aadhar=323456789412,
         )
         user.is_superuser=True
         user.is_admin = True

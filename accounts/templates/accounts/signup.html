@@ -1,0 +1,71 @@
+{% extends 'society/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container mt-5">
+    <section class="vh-100 bg-image">
+        <div class="mask d-flex align-items-center gradient-custom-3">
+          <div class="container">
+            <div class="row d-flex justify-content-center align-items-center">
+              <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                <div class="card" style="border-radius: 15px;">
+                  <div class="card-body p-5">
+                    <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+                    {% if messages %}
+                        <ul class="messages">
+                        {% for message in messages %}
+                            <li class="{{ message.tags }}">{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                    <form action="{% url 'signup' %}" method="POST">
+                      {% csrf_token %}
+                      <div class="form-outline mb-4">
+                        <input type="text" id="form3Example1cg" class="form-control form-control-lg" name="first_name" />
+                        <label class="form-label" for="form3Example1cg">First Name</label>
+                      </div>
+
+                      <div class="form-outline mb-4">
+                        <input type="text" id="form3Example1cg" class="form-control form-control-lg"  name="last_name"/>
+                        <label class="form-label" for="form3Example1cg">Last Name</label>
+                      </div>
+
+                      <div class="form-outline mb-4">
+                        <input type="email" id="form3Example3cg" class="form-control form-control-lg"  name="email"/>
+                        <label class="form-label" for="form3Example3cg">Your Email</label>
+                      </div>
+
+                      <div class="form-outline mb-4">
+                        <input type="number" id="form3Example1cg" class="form-control form-control-lg"  name="phone"/>
+                        <label class="form-label" for="form3Example1cg">Phone</label>
+                      </div>
+                      
+                      <div class="form-outline mb-4">
+                        <input type="number" id="form3Example1cg" class="form-control form-control-lg"  name="aadhar"/>
+                        <label class="form-label" for="form3Example1cg">Aadhar</label>
+                      </div>
+
+                      <div class="form-outline mb-4">
+                        <input type="password" id="form3Example4cg" class="form-control form-control-lg"  name="password"/>
+                        <label class="form-label" for="form3Example4cg">Password</label>
+                      </div>
+      
+                      <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                      </div>
+      
+                      <p class="text-center text-muted mt-2 mb-0">Have already an account? <a href="#!" class="fw-bold text-body"><u>Login here</u></a></p>
+      
+                    </form>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+</div>
+
+{% endblock %}

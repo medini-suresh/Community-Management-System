@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views import View
 from society.models import Flat, Society
 
 # Create your views here.
@@ -17,3 +18,8 @@ def home(request):
         'societies': societies,
     }
     return render(request, 'society/index.html', for_frontend)
+
+class RegisterView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'society/contact_us.html')
+    
