@@ -1,14 +1,14 @@
 {% extends 'dashboard/base.html' %}
 {% load static %}
-{% block title %}donations{% endblock %}
+{% block title %}Flats{% endblock %}
 {% block content %}
     <!--Section: Sales Performance KPIs-->
     <section class="mb-4">
         <div class="card">
           <div class="card-header text-left py-3">
             <h5 class="mb-0 text-left">
-              <strong>Donations</strong>
-              <a href="" class="btn btn-primary btn-sm " role="button" aria-disabled="true">Add donation</a>
+              <strong>List Of Flats</strong>
+              <a href="{% url 'add-flat' %}" class="btn btn-primary btn-sm " role="button" aria-disabled="true">Add Flat </a>
             </h5>
           </div>
           <div class="card-body">
@@ -16,20 +16,23 @@
               <table class="table table-hover text-nowrap">
                 <thead>
                   <tr>
-                    <th scope="col">Donor</th>
-                    <th scope="col">Camp</th>
-                    <th scope="col">quantity</th>
-                    <th scope="col">Edit/Delete</th>
+                    <th scope="col">Society</th>
+                    <th scope="col">BHK</th>
+                    <th scope="col">Flat Number</th>
+                    <th scope="col">Floor Number</th>
+                    <th scope="col">Block</th>
                   </tr>
                 </thead>
                 <tbody>
-                    {% for donation in donations %}
+                    {% for flat in flats %}
                   <tr>
-                    <td>{{donation.donor}}</td>
-                    <td>{{donation.camp}}</td>
-                    <td>{{donation.quantity}}</td>
+                    <td>{{flat.society}}</td>
+                    <td>{{flat.bhk}}</td>
+                    <td>{{flat.number}}</td>
+                    <td>{{flat.floor_no}}</td>
+                    <td>{{flat.block}}</td>
                     <td>
-                      <a type="button" class="btn btn-warning">Edit</a>
+                      <a href="{% url 'edit-flat' flat.id %}" type="button" class="btn btn-warning">Edit</a>
                       <a type="button" class="btn btn-danger">Delete</a>
                     </td>
                   </tr>

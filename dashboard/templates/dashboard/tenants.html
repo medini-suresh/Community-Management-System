@@ -1,0 +1,45 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block title %}Tenants{% endblock %}
+{% block content %}
+    <!--Section: Sales Performance KPIs-->
+    <section class="mb-4">
+        <div class="card">
+          <div class="card-header text-left py-3">
+            <h5 class="mb-0 text-left">
+              <strong>List Of Tenants</strong>
+              <a href="" class="btn btn-primary btn-sm " role="button" aria-disabled="true">Add Tenants </a>
+            </h5>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover text-nowrap">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Flat</th>
+                    <th scope="col">Owner</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for tenant in tenants %}
+                    <tr>
+                      <td>{{tenant.user}}</td>
+                      <td>{{tenant.user.email}}</td>
+                      <td>{{tenant.flat}}</td>
+                      <td>{{tenant.owner}}</td>
+                      <td>
+                          <a type="button" class="btn btn-warning">Edit</a>
+                          <a type="button" class="btn btn-danger">Delete</a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Section: Sales Performance KPIs-->
+{% endblock %}

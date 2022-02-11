@@ -7,8 +7,8 @@
         <div class="card">
           <div class="card-header text-left py-3">
             <h5 class="mb-0 text-left">
-              <strong>CBC Reports</strong>
-              <a href="" class="btn btn-primary btn-sm " role="button" aria-disabled="true">Add CBC Report</a>
+              <strong>Societies</strong>
+              <a href="" class="btn btn-primary btn-sm " role="button" aria-disabled="true">Add Society</a>
             </h5>
           </div>
           <div class="card-body">
@@ -16,25 +16,21 @@
               <table class="table table-hover text-nowrap">
                 <thead>
                   <tr>
-                    <th scope="col">Donor</th>
-                    <th scope="col">WBC</th>
-                    <th scope="col">RBC</th>
-                    <th scope="col">HBG</th>
-                    <th scope="col">Platelets</th>
-                    <th scope="col">Remarks</th>
-                    <th scope="col">Edit/Delete</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Owner Company</th>
+                    <th scope="col">Secretary</th>
                   </tr>
                 </thead>
                 <tbody>
-                    {% for report in societies %}
+                    {% for society in societies %}
                   <tr>
-                    <td>{{report.donor}}</td>
-                    <td>{{report.wbc}}</td>
-                    <td>{{report.rbc}}</td> 
-                    <td>{{report.hbg}}</td>
-                    <td>{{report.platelet}}</td>
-                    <td>{{report.remarks}}</td>
+                    <td>{{society.name}}</td>
+                    <td>{{society.location}}</td>
+                    <td>{{society.owner_company}}</td> 
+                    <td>{{society.secretary}}</td>
                     <td>
+                      <a href="{% url 'society-detail' society.id %}" type="button" class="btn btn-primary">Detail</a>
                       <a type="button" class="btn btn-warning">Edit</a>
                       <a type="button" class="btn btn-danger">Delete</a>
                     </td>

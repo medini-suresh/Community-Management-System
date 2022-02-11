@@ -1,0 +1,75 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block title %}CBC Reports{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-xl-12 col-md-12 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex justify-content-between p-md-1">
+              <div class="d-flex flex-row">
+                <div class="align-self-center">
+                  <h2 class="h1 mb-0 me-4">{{society.name}}</h2>
+                  <div>{{society.location}}</div>
+                </div>
+                <!-- <div>
+                  <h4>Donors</h4>
+                  <p class="mb-0">Number Of Donors</p>
+                </div> -->
+              </div>
+              {% if society.owner_company %}
+              <div class="align-self-center">
+                <strong>By {{society.owner_company}}</strong>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>   
+</div>
+ 
+    <!--Section: Sales Performance KPIs-->
+    <section class="mb-4">
+        <div class="card">
+          <div class="card-header text-left py-3">
+            <h5 class="mb-0 text-left">
+              <strong>List Of Flats</strong>
+              <a href="{% url 'add-flat' %}" class="btn btn-primary btn-sm " role="button" aria-disabled="true">Add Flat </a>
+            </h5>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover text-nowrap">
+                <thead>
+                  <tr>
+                    <th scope="col">Society</th>
+                    <th scope="col">BHK</th>
+                    <th scope="col">Flat Number</th>
+                    <th scope="col">Owner</th>
+                    <th scope="col">Floor Number</th>
+                    <th scope="col">Block</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for flat in flats %}
+                  <tr>
+                    <td>{{flat.society}}</td>
+                    <td>{{flat.bhk}}</td>
+                    <td>{{flat.number}}</td>
+                    <td>{{flat.owner}}</td>
+                    <td>{{flat.floor_no}}</td>
+                    <td>{{flat.block}}</td>
+                    <td>
+                      <a href="{% url 'edit-flat' flat.id%}" type="button" class="btn btn-warning">Edit</a>
+                      <a type="button" class="btn btn-danger">Delete</a>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Section: Sales Performance KPIs-->
+{% endblock %}
