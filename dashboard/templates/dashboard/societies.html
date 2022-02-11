@@ -1,0 +1,50 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block title %}CBC Reports{% endblock %}
+{% block content %}
+    <!--Section: Sales Performance KPIs-->
+    <section class="mb-4">
+        <div class="card">
+          <div class="card-header text-left py-3">
+            <h5 class="mb-0 text-left">
+              <strong>CBC Reports</strong>
+              <a href="" class="btn btn-primary btn-sm " role="button" aria-disabled="true">Add CBC Report</a>
+            </h5>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover text-nowrap">
+                <thead>
+                  <tr>
+                    <th scope="col">Donor</th>
+                    <th scope="col">WBC</th>
+                    <th scope="col">RBC</th>
+                    <th scope="col">HBG</th>
+                    <th scope="col">Platelets</th>
+                    <th scope="col">Remarks</th>
+                    <th scope="col">Edit/Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for report in societies %}
+                  <tr>
+                    <td>{{report.donor}}</td>
+                    <td>{{report.wbc}}</td>
+                    <td>{{report.rbc}}</td> 
+                    <td>{{report.hbg}}</td>
+                    <td>{{report.platelet}}</td>
+                    <td>{{report.remarks}}</td>
+                    <td>
+                      <a type="button" class="btn btn-warning">Edit</a>
+                      <a type="button" class="btn btn-danger">Delete</a>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Section: Sales Performance KPIs-->
+{% endblock %}

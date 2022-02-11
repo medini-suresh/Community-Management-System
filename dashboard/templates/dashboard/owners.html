@@ -1,0 +1,68 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block title %}Donors{% endblock %}
+{% block content %}
+    <!--Section: Sales Performance KPIs-->
+    <section class="mb-4">
+        <div class="card">
+          <div class="card-header text-left py-3">
+            <h5 class="mb-0 text-left">
+              <strong>List Of Donors</strong>
+              <a href="" class="btn btn-primary btn-sm " role="button" aria-disabled="true">Add Donor</a>
+            </h5>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover text-nowrap">
+                <thead>
+                  <tr>
+                    <th scope="col">Email</th>
+                    <th scope="col">Father's Name</th>
+                    <th scope="col">Blood Group</th>
+                    <th scope="col">Donated Previously</th>
+                    <th scope="col">Disease History</th>
+                    <th scope="col">Weight</th>
+                    <th scope="col">Blood Pressure</th>
+                    <th scope="col">Pulse</th>
+                    <th scope="col">Temperature</th>
+                    <th scope="col">Edit/Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for donor in owners %}
+                  <tr>
+                    <td>{{donor.user}}</td>
+                    <td>{{donor.fathers_name}}</td>
+                    <td>{{donor.blood_group}}</td>
+                    {% if donor.donated_previously %}
+                        <td>Yes</td>
+                    {% else %}
+                        <td>No</td>
+                    {% endif %}
+                    {% for disease in donor.disease_history.all %}
+                        <td>{{disease}}</td>
+                    {% empty %}
+                      <td>None</td>
+                    {% endfor %}
+                    <td>{{donor.weight}}8</td>
+                    <td>{{donor.bp}}</td>
+                    <td>{{donor.pulse}}</td>
+                    {% if donor.temp %}
+                      <td>{{donor.temp}}</td>
+                    {% else %}
+                      <td>----</td>
+                    {% endif %}
+                    <td>
+                      <a type="button" class="btn btn-warning">Edit</a>
+                      <a type="button" class="btn btn-danger">Delete</a>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Section: Sales Performance KPIs-->
+{% endblock %}
