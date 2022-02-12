@@ -8,7 +8,7 @@
           <div class="card-header text-left py-3">
             <h5 class="mb-0 text-left">
               <strong>List Of Tenants</strong>
-              <a href="" class="btn btn-primary btn-sm " role="button" aria-disabled="true">Add Tenants </a>
+              <a href="{% url 'add-tenant' %}" class="btn btn-primary btn-sm " role="button" aria-disabled="true">Add Tenants </a>
             </h5>
           </div>
           <div class="card-body">
@@ -30,8 +30,8 @@
                       <td>{{tenant.flat}}</td>
                       <td>{{tenant.owner}}</td>
                       <td>
-                          <a type="button" class="btn btn-warning">Edit</a>
-                          <a type="button" class="btn btn-danger">Delete</a>
+                          <a href="{% url 'edit-tenant' tenant.id %}" type="button" class="btn btn-warning">Edit</a>
+                          <a href="{% url 'delete-tenant' tenant.id %}" type="button" class="btn btn-danger">Delete</a>
                       </td>
                     </tr>
                   {% endfor %}

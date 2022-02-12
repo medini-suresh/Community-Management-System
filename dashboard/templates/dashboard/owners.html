@@ -8,7 +8,7 @@
           <div class="card-header text-left py-3">
             <h5 class="mb-0 text-left">
               <strong>List Of Owners</strong>
-              <a href="" class="btn btn-primary btn-sm " role="button" aria-disabled="true">Add Owner</a>
+              <a href="{% url 'add-owner' %}" class="btn btn-primary btn-sm " role="button" aria-disabled="true">Add Owner</a>
             </h5>
           </div>
           <div class="card-body">
@@ -36,8 +36,8 @@
                     <td>{{owner.user.aadhar}}</td>
                     <td>{{owner.address}}</td>
                     <td>
-                      <a type="button" class="btn btn-warning">Edit</a>
-                      <a type="button" class="btn btn-danger">Delete</a>
+                      <a href="{% url 'edit-owner' owner.id %}" type="button" class="btn btn-warning">Edit</a>
+                      <a href="{% url 'delete-owner' owner.id %}" type="button" class="btn btn-danger">Delete</a>
                     </td>
                   </tr>
                   {% endfor %}

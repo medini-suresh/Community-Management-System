@@ -33,7 +33,7 @@
                     <td>{{flat.block}}</td>
                     <td>
                       <a href="{% url 'edit-flat' flat.id %}" type="button" class="btn btn-warning">Edit</a>
-                      <a type="button" class="btn btn-danger">Delete</a>
+                      <a href="{% url 'delete-flat' flat.id %}" type="button" class="btn btn-danger">Delete</a>
                     </td>
                   </tr>
                   {% endfor %}

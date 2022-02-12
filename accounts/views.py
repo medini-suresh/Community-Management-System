@@ -11,6 +11,8 @@ from accounts.models import CustomUser
 # Create your views here.
 def login_view(request):
     if request.method=='GET':
+        if request.user.is_authenticated:
+            return HttpResponseRedirect(reverse('home'))
         return render(request, 'accounts/login.html')
     if request.method=='POST':
         email = request.POST['email']
@@ -20,6 +22,8 @@ def login_view(request):
         user = authenticate(request, email=email, password=password)
         if user is not None:
             login(request, user)
+            if user.is_superuser or user.is_staff:
+                return HttpResponseRedirect(reverse('dashboard'))
             return HttpResponseRedirect(reverse('home'))
         else:
             return HttpResponseRedirect(reverse('login'))
