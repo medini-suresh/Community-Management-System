@@ -10,9 +10,17 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def dashboard(request):
+
+    if not request.user.is_superuser or not request.user.is_staff:
+        return HttpResponseRedirect(reverse('home'))
+
+    # secretary = Society.objects.filter(secretary=request.user).first()
+
     society_count = Society.objects.all().count()
     flat_count = Flat.objects.all().count()
     owner_count = Owner.objects.all().count()
+    # societies = None
+    # if not secretary:
     societies = Society.objects.all()
     context = {
         'society_count':society_count,
